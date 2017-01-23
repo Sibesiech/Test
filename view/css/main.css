@@ -1,4 +1,36 @@
 *{
     padding: 0;
     margin: 0;
+    font-family: Arial, SansSerif, sans-serif;
+}
+
+p{
+    padding: 0.5em;
+}
+#signupform{
+    display: none;
+}
+#signupform:target {
+    display: block;
+}
+
+#signupform{
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    background-color: #222;
+    color: #FFFFFF;
+
+
+}
+
+#signupform input{
+    display: block;
+    width: 90%;
+    box-sizing: border-box;
+    left: auto;
+    right: auto;
+    text-align: center;
+    padding: 1em;
+    margin: 1em 5%;
 }

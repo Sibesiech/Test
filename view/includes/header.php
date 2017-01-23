@@ -13,7 +13,8 @@ if (isset($_POST["username"]))
 }
 ?>
 <header>
-    <div class="register">
+    <a href="#signupform">SIGN UP</a>
+    <div class="signupform" id="signupform">
         <form action="" method="post">
             <p>
                 <?php
@@ -28,16 +29,20 @@ if (isset($_POST["username"]))
                         echo "Dieser Benutzername wird bereits verwendet";
                     }
                 }
-                else
+                elseif (isset($_SESSION["username"]))
                 {
                     echo "Willkommen " . $_SESSION["username"];
-                }
-                ?>
-            </p>
-            <input type="text" name="username" placeholder="Benutzername" required>
+                }?>
+            </p><span><a href="#">X</a></span>
+            <input type="text" name="username"
+                   placeholder="Benutzername" required>
             <input type="email" name="email" placeholder="E-Mail" required>
             <input type="password" name="pwd" placeholder="Passwort" required>
-            <input type="submit">
+            <input type="submit"">
         </form>
     </div>
+    <form action="" method="post">
+        <button type="submit">Logout</button>
+    </form>
 </header>
+

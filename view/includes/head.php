@@ -11,7 +11,7 @@ session_start();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="css/main.css">
     <title>
         <?php
         if (isset($_SESSION["username"]))

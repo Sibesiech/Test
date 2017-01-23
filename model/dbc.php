@@ -18,7 +18,4 @@ if (!$conn)
 {
     die("connection faildes: " . $conn->connect_error);
 }
-else
-{
-    echo $conn->insert_id;
-}
+
