@@ -1,9 +1,13 @@
+# noinspection SqlNoDataSourceInspectionForFile
+
 create database if not exists nobox;
 use nobox;
 
 create table if not exists Users(
 ID_User int not null auto_increment,
 Username varchar(30) not null,
+first varchar(255),
+last VARCHAR(255),
 Emailaddress varchar(30) not null,
 Hash  VARCHAR(1000) not null,
 UserPiclink varchar(255),
@@ -56,7 +60,7 @@ constraint fk_collection_users foreign key (User_ID) references Users(ID_User)
 
 create table if not exists Box(
 ID_Box int not null auto_increment,
-ParrentBoxID int,
+ParentBoxID int,
 Note_ID int,
 Gallery_ID int,
 Collection_ID int,

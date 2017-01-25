@@ -2,35 +2,49 @@
     padding: 0;
     margin: 0;
     font-family: Arial, SansSerif, sans-serif;
+    font-size: 110%;
 }
 
 p{
     padding: 0.5em;
 }
-#signupform{
-    display: none;
-}
-#signupform:target {
-    display: block;
-}
-
-#signupform{
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    background-color: #222;
-    color: #FFFFFF;
-
+form{
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: center;
 
 }
-
-#signupform input{
-    display: block;
-    width: 90%;
+form *{
     box-sizing: border-box;
-    left: auto;
-    right: auto;
+    width: 90%;
+    margin:  0.2em 0;
     text-align: center;
-    padding: 1em;
-    margin: 1em 5%;
 }
+/*#signupform{*/
+    /*display: block;*/
+/*}*/
+/*#signupform:target {*/
+    /*display: block;*/
+/*}*/
+
+/*#signupform{*/
+    /*text-align: center;*/
+    /*position: inherit;*/
+    /*width: 100%;*/
+    /*background-color: #222;*/
+    /*color: #FFFFFF;*/
+
+
+/*}*/
+
+/*#signupform input{*/
+    /*display: block;*/
+    /*width: 90%;*/
+    /*box-sizing: border-box;*/
+    /*left: auto;*/
+    /*right: auto;*/
+    /*text-align: center;*/
+    /*padding: 1em;*/
+    /*margin: 1em 5%;*/
+/*}*/
