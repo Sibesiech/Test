@@ -47,10 +47,12 @@ class db
         $userlogin->bind_param("ss", $data["username"], $password);
         $userlogin->execute();
         $userlogin->bind_result($id_user, $username);
+        $_SESSION["loginsuccess"] =false;
         while ($userlogin->fetch())
         {
             $_SESSION["id"] = htmlspecialchars($id_user);
             $_SESSION["username"] = htmlspecialchars($username);
+            $_SESSION["loginsuccess"] =true;
         }
         return $userlogin->error;
     }
@@ -73,12 +75,3 @@ class db
     }
 
 }
-
-//$conn, $_POST["username"], $_POST["email"], $_POST["pwd"]
-//function cr
-//    $conn->query("INSERT INTO USERS (Username,Emailaddress,Hash) VALUES ('$username','$email','$pwd') ");
-//    $_SESSION["username"] = $username;
-//    $_SESSION["id"] = eateuser($conn, $username, $email, $pwd)
-//{$conn->insert_id;
-//    return $conn->error;
-//}

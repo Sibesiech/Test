@@ -13,6 +13,8 @@ form{
     flex-flow: wrap;
     align-items: center;
     justify-content: center;
+    border:0.2em solid #000;
+
 
 }
 form *{
