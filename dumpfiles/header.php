@@ -8,21 +8,17 @@
 
 
 require_once($_SESSION["mypath"] . "\\model\\db.php");
-$servername = "172.16.2.152:3307";
-$dbusername = "PHPinstance";
-$dbpwd = "PHPinstance17";
-$dbname= "nobox";
-$port = "3307";
+require_once($_SESSION["mypath"] . "\\model\\dbconfig.php");
 
 
 if (isset($_POST["createuser"]))
 {
-    $db = new db($servername, $dbusername,$dbpwd, $dbname, $port);
+    $db = new db($servername, $dbusername, $dbpwd, $dbname, $port);
     $errorcreateuser = $db->createuser($_POST);
 }
 if (isset($_POST["login"]))
 {
-    $db = new db($servername, $dbusername,$dbpwd, $dbname, $port);
+    $db = new db($servername, $dbusername, $dbpwd, $dbname, $port);
     $errorlogin = $db->login($_POST);
 }
 
@@ -34,7 +30,7 @@ if (isset($_POST["login"]))
         <form action="" method="post">
             <p>
                 <?php
-                if (isset($_SESSION["username"])&&empty($errorcreateuser))
+                if (isset($_SESSION["username"]) && empty($errorcreateuser))
                 {
                     echo "Willkommen " . $_SESSION["username"];
                 }
@@ -68,27 +64,24 @@ if (isset($_POST["login"]))
                 if (isset($_SESSION["username"]))
                 {
                     echo "Willkommen " . $_SESSION["username"];
-                } elseif(isset($errorlogin)){
-                    echo $errorlogin;
                 }
-                else{
+                elseif (isset($_SESSION["loginsuccess"])&&$_SESSION["loginsuccess"]==false)
+                {
+                    echo "Benutzername oder Passwort falsch";
+                    session_destroy();
+                }
+                else
+                {
                     echo "Login!";
                 }
                 ?>
 
             </p><br>
             <input type="hidden" name="login" value="true">
-            <input type="text" name="username" placeholder="Benutzername">
-            <input type="password" name="pwd" placeholder="Passwort">
+            <input type="text" name="username" placeholder="Benutzername" required>
+            <input type="password" name="pwd" placeholder="Passwort" required>
             <input type="submit" value="Login">
         </form>
-        <p><?php
-            if (isset($_SESSION["test"]))
-            {
-                var_dump($_SESSION["test"]);
-            }
-            ?> </p>
-
     </div>
     <form action="../../controller/logout.php" method="post">
         <button type="submit">Logout</button>

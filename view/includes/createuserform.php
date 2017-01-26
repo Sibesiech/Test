@@ -31,7 +31,7 @@
         }
         ?>
     </p>
-    <input type="hidden" name="createuser" value="true">
+    <input type="hidden" name="form" value="createuser">
     <input type="text" name="username" placeholder="Benutzername" required>
     <input type="email" name="email" placeholder="E-Mail" required>
     <input type="password" name="pwd" placeholder="Passwort" required>

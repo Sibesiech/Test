@@ -9,4 +9,3 @@ $servername = "172.16.2.152:3307";
 $dbusername = "PHPinstance";
 $dbpwd = "PHPinstance17";
 $dbname= "nobox";
-$port = "3307";

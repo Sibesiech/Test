@@ -12,18 +12,16 @@ class db
     private $username = "root";
     private $password = "";
     private $datbasename = "nobox";
-    private $port = "3306";
     private $conn;
     private $message;
 
-    public function __construct($servername = "127.0.0.1", $username = "root", $password = "", $databasename = "nobox", $port = "3306")
+    public function __construct($servername, $username, $password, $databasename)
     {
         $this->servername = $servername;
         $this->username = $username;
         $this->password = $password;
         $this->datbasename = $databasename;
-        $this->port = $port;
-        $this->conn = new mysqli("$this->servername", "$this->username", "$this->password", "$this->datbasename", "$this->port");
+        $this->conn = new mysqli("$this->servername", "$this->username", "$this->password", "$this->datbasename");
         $this->message = $this->conn->error;
     }
 
@@ -33,12 +31,14 @@ class db
         $password = hash("sha256", $data["pwd"]);
         $userinsert->bind_param("sss", $data["username"], $data["email"], $password);
         $userinsert->execute();
-        $_SESSION["test"] = $userinsert->get_result();
-        $_SESSION["username"] = $data["username"];
-        $_SESSION["id"] = $userinsert->insert_id;
+        $returnarray["username"] = $data["username"];
+        $returnarray["id"] = $userinsert->insert_id;
+        $returnarray["dbmessage"] = $userinsert->error;
+        $userinsert->close();
 
-        return $userinsert->error;
+        return $returnarray;
     }
+
 
     public function login($data)
     {
@@ -47,14 +47,45 @@ class db
         $userlogin->bind_param("ss", $data["username"], $password);
         $userlogin->execute();
         $userlogin->bind_result($id_user, $username);
-        $_SESSION["loginsuccess"] =false;
+        $returnarray["loginsuccess"] = false;
         while ($userlogin->fetch())
         {
-            $_SESSION["id"] = htmlspecialchars($id_user);
-            $_SESSION["username"] = htmlspecialchars($username);
-            $_SESSION["loginsuccess"] =true;
+            $returnarray["id"] = htmlspecialchars($id_user);
+            $returnarray["username"] = htmlspecialchars($username);
+            $returnarray["loginsuccess"] = true;
         }
-        return $userlogin->error;
+        $returnarray["dbmessage"] = $userlogin->error;
+        $userlogin->close();
+        return $returnarray;
+    }
+
+
+    public function select($table, $userid = null)
+    {
+        $returnarray= array();
+        if (empty($userid))
+        {
+            $result = $this->conn->query("SELECT * FROM $table");
+        }
+        elseif (isset($userid))
+        {
+            $result = $this->conn->query("SELECT * FROM $table WHERE ID_User like $userid");
+        }
+        if ($result)
+        {
+            $returnarray["dbmessage"] = "successfull";
+            while ($row = $result->fetch_assoc())
+            {
+                array_push($returnarray, $row);
+            }
+            $result->free();
+        }
+        else
+        {
+            $returnarray["dbmessage"] = "failed";
+        }
+
+        return $returnarray;
     }
 
     public function __destruct()

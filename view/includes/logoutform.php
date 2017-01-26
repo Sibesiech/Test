@@ -7,6 +7,8 @@
  */
 ?>
 
-<form action="../../controller/logout.php" method="post">
+<form action="" method="post">
+    <p><?php echo "Willkommen " . $_SESSION["username"]; if ($_SESSION["username"]=="Rino") echo ", du bisch dr best!"?></p>
+    <input type="hidden" name="form" value="logout">
     <button type="submit">Logout</button>
 </form>

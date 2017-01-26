@@ -8,26 +8,25 @@
 
 ?>
     <form action="" method="post">
-        <p>
-            <?php
-            if (isset($_SESSION["username"]))
-            {
-                echo "Willkommen " . $_SESSION["username"];
-            }
-            elseif (isset($errorlogin))
-            {
-                echo $errorlogin;
-            }
-            else
-            {
-                echo "Login!";
-            }
-            ?>
+    <p>
+        <?php
+        if (isset($_SESSION["username"]))
+        {
+            echo "Willkommen " . $_SESSION["username"];
+        }
+        elseif (isset($_SESSION["loginsuccess"]) && $_SESSION["loginsuccess"] == false)
+        {
+            echo "Benutzername oder Passwort falsch";
+        }
+        else
+        {
+            echo "Login!";
+        }
+        ?>
 
-        </p><br>
-        <input type="hidden" name="login" value="true">
-        <input type="text" name="username" placeholder="Benutzername">
-        <input type="password" name="pwd" placeholder="Passwort">
-        <input type="submit" value="Login">
-    </form>
-    <p><?php
+    </p><br>
+    <input type="hidden" name="form" value="login">
+    <input type="text" name="username" placeholder="Benutzername" required>
+    <input type="password" name="pwd" placeholder="Passwort" required>
+    <input type="submit" value="Login">
+    </form><?php

@@ -8,21 +8,42 @@
 p{
     padding: 0.5em;
 }
-form{
-    display: flex;
-    flex-flow: wrap;
-    align-items: center;
-    justify-content: center;
-    border:0.2em solid #000;
-
+h1{
+    font-size: 250%;
+    margin: 0.2em;
+    border-bottom: 0.2em solid #000000;
+    display: inline;
 
 }
-form *{
-    box-sizing: border-box;
-    width: 90%;
-    margin:  0.2em 0;
-    text-align: center;
+header{
+    border-bottom: 0.2em solid #000000;
+    margin-bottom: 0.7em;
 }
+/*header {*/
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: flex-end;*/
+    /*flex-flow: row;*/
+/*}*/
+/*form{*/
+    /*box-sizing: border-box;*/
+    /*display: inline-flex;*/
+    /*flex-flow: wrap;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    /*border:0.2em solid #000;*/
+    /*margin: 0.2em;*/
+
+
+/*}*/
+/*form *{*/
+
+    /*box-sizing: border-box;*/
+    /*flex-wrap: nowrap;*/
+    /*width: 20%;*/
+    /*margin:  0.2em 0;*/
+    /*text-align: center;*/
+/*}*/
 /*#signupform{*/
     /*display: block;*/
 /*}*/
