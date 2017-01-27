@@ -10,6 +10,7 @@ require_once($_SESSION["mypath"] . "\\model\\db.php");
 require_once($_SESSION["mypath"] . "\\model\\dbconfig.php");
 require_once($_SESSION["mypath"] . "\\controller\\sessionhandler.php");
 
+db::configconn($servername,$dbusername,$dbpwd,$dbname);
 
 if (isset($_POST["form"]))
 {
@@ -17,15 +18,14 @@ if (isset($_POST["form"]))
     {
         case "createuser":
         {
-            $db = new db($servername, $dbusername, $dbpwd, $dbname);
-            $dbresult = $db->createuser($_POST);
+
+            $dbresult = db::createuser($_POST);
             sessinonhandler::login($dbresult);
             break;
         }
         case "login":
         {
-            $db = new db($servername, $dbusername, $dbpwd, $dbname);
-            $dbresult = $db->login($_POST);
+            $dbresult = db::login($_POST);
             sessinonhandler::login($dbresult);
             break;
         }

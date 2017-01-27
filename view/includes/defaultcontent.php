@@ -7,5 +7,3 @@
  */
 
 echo "Startseite, bitte Regisitriern sie sich oder Loggen sie sich ein";
-var_dump($_SESSION);
-var_dump($dbresult);

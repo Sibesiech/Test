@@ -9,8 +9,9 @@
 
 ?>
 <aside>
-    <form name="">
+    <form name="createcollection" method="post" action="">
         <input type="hidden" name="formaside" value="createcollection">
+        <input type="text" name="collectionheader" required>
         <input type="submit" value="Neue Collection erstellen">
     </form>
 

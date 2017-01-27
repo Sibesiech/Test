@@ -20,7 +20,7 @@ else
 {
     require_once "includes/defaultcontent.php";
 }
-
+    require_once "includes/debugpannel.php"
 ?>
 </body>
 </html>
